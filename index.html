@@ -1,5 +1,5 @@
-<<!DOCTYPE html>
-<html lang="gr-el">
+<!DOCTYPE html>
+<html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Deemos-Democracy for you</title>
@@ -14,10 +14,13 @@
     <link type="text/css" rel="stylesheet" href="./res/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><!--jQuery handling from Google-->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script> <!--jQuery Cookies handling from github-->
+
+
   </head>
   <body>
+    <div>
     <div class="bg-image"></div>
-
+     <button id="switch-lang"> Change Language </button>
     <div>
       <div id="loading" class="loading-state" style="display: none;"></div>
       <div>
@@ -26,103 +29,21 @@
             <div class="floating-signup rel">
               <div class="container-fluid rel">
                 <div class="row">
-                  <button id="switch-lang">Switch Language Icon Here</button>
-                  <h1><span lang="en">Hello</span> <span lang="zh">你好</span></h1>
-                  <p lang="en">I really enjoy coding.</p>
-                  <p lang="zh">我真的很喜歡編碼。</p>
-                  <script>
-                  $(function () {
-                ///// Language Switching (2 languages: English and Chinese). /////
 
-                // Initially disable language switching button.
-                $('#switch-lang').css({'pointer-events':'none',
-                 'cursor':'default'}).attr('disabled','disabled');
-
-                function langButtonListen() {
-                  $('#switch-lang').click(function (event) {
-                    event.preventDefault();
-                    $('[lang="zh"]').toggle();
-                    $('[lang="en"]').toggle();
-                    // Switch cookie stored language.
-                    if ($.cookie('lang') === 'en') {
-                      $.cookie('lang', 'zh', { expires: 7 });
-                    } else {
-                      $.cookie('lang', 'en', { expires: 7 });
-                    }
-                  });
-                  // Enable lang switching button.
-                  $('#switch-lang').css({'pointer-events':'auto',
-                   'cursor':'pointer'}).removeAttr('disabled');
-                }
-
-                // Check if language cookie already exists.
-                if ($.cookie('lang')) {
-                  var lang = $.cookie('lang');
-                  if (lang === 'en') {
-                    $('[lang="zh"]').hide();
-                    langButtonListen();
-                  } else {
-                    $('[lang="en"]').hide();
-                    langButtonListen();
-                  }
-                } else {
-                  // no cookie set, so detect language based on location.
-                  if ("geolocation" in navigator) {
-                    // geolocation is available
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                      // accepted geolocation so figure out which country
-                      var lat = position.coords.latitude,
-                          lng = position.coords.longitude;
-                      $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&sensor=true', null, function (response) {
-                        var country = response.results[response.results.length-1].formatted_address;
-                        if (country ===  'Taiwan' || country === 'China') {
-                          $('[lang="en"]').hide();
-                          $.cookie('lang', 'zh', { expires: 7 });
-                          langButtonListen();
-                        } else {
-                          $('[lang="zh"]').hide();
-                          $.cookie('lang', 'en', { expires: 7 });
-                          langButtonListen();
-                        }
-                      }).fail(function (err) {
-                        console.log('error: '+err);
-                        $('[lang="zh"]').hide();
-                        $.cookie('lang', 'en', { expires: 7 });
-                        langButtonListen();
-                      });
-                    },
-                    function (error) {
-                      if (error.code == error.PERMISSION_DENIED) {
-                        // denied geolocation
-                        $('[lang="zh"]').hide();
-                        $.cookie('lang', 'en', { expires: 7 });
-                        langButtonListen();
-                      } else {
-                        console.log('Unknown error. Defaulting to English!');
-                        $('[lang="zh"]').hide();
-                        $.cookie('lang', 'en', { expires: 7 });
-                        langButtonListen();
-                      }
-                    });
-                  } else {
-                    // geolocation IS NOT available
-                    $('[lang="zh"]').hide();
-                    $.cookie('lang', 'en', { expires: 7 });
-                    langButtonListen();
-                  }
-                }
-              });
-              </script>
-
+                  <h1><span lang="en">Hello</span> <span lang="el">Γειά</span></h1>
                   <div class="user-signup__intro">
-                    <h1 style="text-align: center;">Αλλάζουμε τη Πολιτική ενημέρωση!</h1>
+                    <h1 lang="el" style="text-align: center;">Αλλάζουμε τη Πολιτική ενημέρωση!</h1>
+                    <h1 lang="en" style="text-align: center;">We want to change how you consume Political news!</h1>
                     <p style="text-align: center;">
                       <img src="./res/spacer.png" alt="" class="spacer insert--image wrap-off-align-center"><br>
                     </p>
-                    <p style="text-align: center;">Κουράστηκες να ψάχνεις αντικειμενική πολιτικη ενημέρωση που να μη σου τρωει όλη τη μέρα; Συμπυκνώνουμε τα πιο σημαντικά νεα και στα στέλνουμε!</p>
+                    <p lang="el" style="text-align: center;">Κουράστηκες να ψάχνεις αντικειμενική πολιτικη ενημέρωση που να μη σου τρωει όλη τη μέρα; Συμπυκνώνουμε τα πιο σημαντικά νεα και στα στέλνουμε!</p>
+                    <p lang="en" style="text-align: center;">Are you tired of searching for unbiased political news? We want summarize the most important news for you using Artificial intelligence</p>
+
                     <p style="text-align: center;">
                       <img src="./res/clean-hr.png" alt="" class="clean-hr insert--image wrap-off-align-center">
-                      <span style="font-size: 14px;">Γραψου και ακολούθα την αλλαγή</span>
+                      <span lang="el" style="font-size: 14px;">Γραψου και ακολούθα την αλλαγή</span>
+                      <span lang="en" style="font-size: 14px;">Sign up to stay up to date</span>
                     </p>
                   </div>
                 </div>
@@ -148,6 +69,92 @@
         </section>
       </div>
     </div>
+    <script>
+    $(function () {
+                  ///// Language Switching (2 languages: English and Chinese). /////
+
+                  // Initially disable language switching button.
+                  $('#switch-lang').css({'pointer-events':'none',
+                   'cursor':'default'}).attr('disabled','disabled');
+
+                  function langButtonListen() {
+                    $('#switch-lang').click(function (event) {
+                      event.preventDefault();
+                      $('[lang="el"]').toggle();
+                      $('[lang="en"]').toggle();
+                      // Switch cookie stored language.
+                      if (Cookies('lang') === 'en') {
+                        Cookies('lang', 'el', { expires: 7 });
+                      } else {
+                        Cookies('lang', 'en', { expires: 7 });
+                      }
+                    });
+                    // Enable lang switching button.
+                    $('#switch-lang').css({'pointer-events':'auto',
+                     'cursor':'pointer'}).removeAttr('disabled');
+                  }
+
+                  // Check if language cookie already exists.
+                  if (Cookies('lang')) {
+                    var lang = Cookies('lang');
+                    if (lang === 'en') {
+                      $('[lang="el"]').hide();
+                      langButtonListen();
+                    } else {
+                      $('[lang="en"]').hide();
+                      langButtonListen();
+                    }
+                  } else {
+                    // no cooie set, so detect language based on location.
+                    if ("geolocation" in navigator) {
+                      // geolocation is available
+                      navigator.geolocation.getCurrentPosition(function (position) {
+                        // accepted geolocation so figure out which country
+                        var lat = position.coords.latitude,
+                            lng = position.coords.longitude;
+                        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&sensor=true', null, function (response) {
+                          var country = response.results[response.results.length-1].formatted_address;
+                          if (country ===  'Cyprus' || country === 'Greece') {
+                            $('[lang="en"]').hide();
+                            Cookies('lang', 'el', { expires: 7 });
+                            langButtonListen();
+
+                          } else {
+                            $('[lang="el"]').hide();
+                            Cookies('lang', 'en', { expires: 7 });
+
+                            langButtonListen();
+                          }
+                        }).fail(function (err) {
+                          console.log('error: '+err);
+                          $('[lang="el"]').hide();
+                          Cookies('lang', 'en', { expires: 7 });
+                          langButtonListen();
+                        });
+                      },
+                      function (error) {
+                        if (error.code == error.PERMISSION_DENIED) {
+                          // denied geolocation
+                          $('[lang="el"]').hide();
+                          Cookies('lang', 'en', { expires: 7 });
+                          langButtonListen();
+                        } else {
+                          console.log('Unknown error. Defaulting to English!');
+                          $('[lang="el"]').hide();
+                          Cookies('lang', 'en', { expires: 7 });
+                          langButtonListen();
+                        }
+                      });
+                    } else {
+                      // geolocation IS NOT available
+                      $('[lang="el"]').hide();
+                      Cookies('lang', 'en', { expires: 7 });
+                      langButtonListen();
+                    }
+                  }
+                });
+                </script>
+
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
