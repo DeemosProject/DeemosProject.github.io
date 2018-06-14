@@ -19,7 +19,7 @@
   <option value="en">English</option>
   <option value="es">Espanol</option>
   <option value="zh">普通話</option>
-   </select>
+
     <div class="bg-image"></div>
     <div>
       <div id="loading" class="loading-state" style="display: none;"></div>
@@ -69,7 +69,7 @@
     $('#lang-switch').change(function () {
       var lang = $(this).val();
     switch (lang) {
-    case 'en': 
+    case 'en':
       $('[lang]').hide();
       $('[lang="en"]').show();
       break;
@@ -95,4 +95,5 @@
       ga('create', 'UA-1858235-14', 'auto');
       ga('send', 'pageview');
     </script>
+    </select>
   </body>
